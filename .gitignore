@@ -5,7 +5,8 @@
 
 */bin/*
 !*/bin/data/
-./obj
+obj/*
+bin
 
 #########
 # general
