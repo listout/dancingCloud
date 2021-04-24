@@ -15,13 +15,35 @@ ofPoint p[n]; //Cloud points position
 
 float time0 = 0; //Time value, use for dt computation
 
+unsigned long trackNum = 0; //the track number
+bool haveDirectory;         // flag to check if we have directory as arguments
+
 //--------------------------------------------------------------
 void
 ofApp::setup()
 {
-	//Set up sound sample
-	sound.load(arguments[1]);
-	sound.setLoop(true);
+	//setting the directory path
+	//if not directory then play the same file on loop
+	string path = arguments[1];
+	dir.open(path);
+	//Check if a valid directory and set up the sound
+	if(dir.exists())
+	{
+		haveDirectory = true;
+		//only read mp3 files
+		dir.allowExt("mp3");
+		//populate the directory object
+		dir.listDir();
+		dir.sort();
+		sound.load(dir.getPath(trackNum++)); //play the first track from the directory list
+	}
+	else
+	{
+		sound.load(path);
+		sound.setLoop(true);
+	}
+
+	// play track
 	sound.play();
 
 	//Set spectrum values to 0
@@ -87,6 +109,15 @@ ofApp::update()
 void
 ofApp::draw()
 {
+
+	if(haveDirectory && (sound.isPlaying() == false || sound.getPosition() == 1.0))
+	{
+		if(trackNum == dir.size()) trackNum = 0; //reset track number if at last file
+		sound.unload();                          //unload any previous file
+		sound.load(dir.getPath(trackNum++));     // load the next track
+		sound.play();
+	}
+
 	ofBackground(28, 28, 28); //Backgroud color
 
 	//Draw background rect color for spectrum

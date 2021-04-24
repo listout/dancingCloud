@@ -26,4 +26,5 @@ class ofApp : public ofBaseApp
 
 	// the vector of arguments
 	std::vector<string> arguments;
+	ofDirectory dir;
 };
