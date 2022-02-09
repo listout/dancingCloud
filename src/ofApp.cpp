@@ -82,8 +82,8 @@ void ofApp::update()
 	time0 = time;
 
 	//Updating Rad and vel from the spectrum
-	Rad = ofMap(spectrum[bandRad], 1, 3, 400, 800, true);
-	Vel = ofMap(spectrum[bandVel], 0, 0.1, 0.05, 0.5);
+	Rad = ofMap(spectrum[bandRad], 1, 3, 400, 600, true);
+	Vel = ofMap(spectrum[bandVel], 0, 0.1, 0.02, 0.5);
 
 	//Update particle position
 	for (int j = 0; j < n; ++j) {
@@ -109,22 +109,22 @@ void ofApp::draw()
 		sound.play();
 	}
 
-	ofBackground(28, 28, 28); //Backgroud color
+	ofBackground(26, 26, 36); //Backgroud color
 
 	//Draw background rect color for spectrum
-	ofSetColor(28, 28, 28);
+	ofSetColor(26, 26, 36);
 	ofFill();
 	ofDrawRectangle(10, 600, N * 6, -100);
 
 	//Draw spectrum
-	ofSetColor(46, 49, 61);
+	ofSetColor(26, 26, 26);
 	for (int i = 0; i < N; ++i) {
-		//Draw bandRad and bandVel by black color
-		//and any other by gray color
+		//Draw bandRad and bandVel by light grey color
+		//and any other by dark gray color
 		if (i == bandRad || i == bandVel) {
-			ofSetColor(161, 141, 175);
+			ofSetColor(205, 219, 249);
 		} else {
-			ofSetColor(198, 174, 215);
+			ofSetColor(99, 113, 139);
 		}
 		ofDrawRectangle(10 + i * 5, 600, 3, -spectrum[i] * 100);
 	}
@@ -136,7 +136,7 @@ void ofApp::draw()
 	ofTranslate(ofGetWidth() / 2., ofGetHeight() / 2.);
 
 	//Draw cloud's points
-	ofSetColor(181, 180, 201);
+	ofSetColor(177, 219, 164);
 	ofFill();
 	for (int i = 0; i < n; ++i) {
 		ofDrawCircle(p[i], 2);
