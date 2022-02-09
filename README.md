@@ -10,11 +10,6 @@ Oriented flow sometimes.
 
 |-------------------------|---------------------------|
 | ![](screens/screen.png) | ![](screens/screen_2.png) |
-|-------------------------|---------------------------|
-
-|------|------|
-| Test | Test |
-|------|------|
 
 The dancing clouds example from the Mastering Openframeworks Book.
 
