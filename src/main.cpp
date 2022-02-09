@@ -3,21 +3,15 @@
 #include "ofMain.h"
 
 //========================================================================
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-
 	//vector for storing the string
 	std::vector<string> args;
-	if(argc == 2)
-	{
-		for(int i = 0; i < argc; ++i)
-		{
+	if (argc == 2) {
+		for (int i = 0; i < argc; ++i) {
 			args.push_back(argv[i]);
 		}
-	}
-	else
-	{
+	} else {
 		std::cout << "Wrong Argument format" << std::endl;
 		return 1;
 	}
@@ -30,7 +24,7 @@ main(int argc, char *argv[])
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
 	// pass in width and height too:
-	ofApp *app     = new ofApp();
+	ofApp *app = new ofApp();
 	app->arguments = args;
 	ofRunApp(app);
 }
