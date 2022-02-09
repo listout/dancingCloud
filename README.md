@@ -8,8 +8,8 @@ Oriented flow sometimes.
 
 ### Preview
 
-|-------------------------|---------------------------|
 | ![](screens/screen.png) | ![](screens/screen_2.png) |
+|-------------------------|---------------------------|
 
 The dancing clouds example from the Mastering Openframeworks Book.
 
